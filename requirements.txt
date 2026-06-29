@@ -1,0 +1,15 @@
+# Talent Intelligence API — dependências de runtime (núcleo)
+# Tudo aqui é "pure-python" ou possui wheel pré-compilada (inclusive para Python 3.14),
+# portanto a API roda em qualquer máquina apenas com `pip install -r requirements.txt`.
+fastapi==0.137.1
+uvicorn==0.49.0
+pydantic==2.13.4
+pydantic-settings==2.14.1
+PyJWT==2.13.0
+python-multipart==0.0.32
+python-dotenv==1.2.2
+
+# IA / LLM é OPCIONAL. A API funciona 100% offline (motor de regras + similaridade).
+# Para ativar o enriquecimento por LLM (Claude), descomente a linha abaixo e
+# defina ANTHROPIC_API_KEY no .env. A ausência da lib NÃO quebra a aplicação.
+# anthropic==0.40.0
