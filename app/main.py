@@ -11,6 +11,7 @@ import uuid
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 
 from . import __version__
 from .api.v1.router import api_router
@@ -56,6 +57,17 @@ app = FastAPI(
 )
 
 register_exception_handlers(app)
+
+# CORS liberado para facilitar demonstrações locais (Swagger, páginas HTML de demo,
+# front-ends). Em produção, restrinja `allow_origins` aos domínios confiáveis.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+    expose_headers=["X-Request-ID"],
+)
 
 
 @app.middleware("http")
