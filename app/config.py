@@ -40,7 +40,7 @@ class Settings(BaseSettings):
 
     # --- LLM opcional ---
     anthropic_api_key: str = ""
-    anthropic_model: str = "claude-opus-4-8"
+    anthropic_model: str = "claude-sonnet-4-5"
 
     @property
     def llm_enabled(self) -> bool:

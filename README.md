@@ -183,13 +183,15 @@ talent-intelligence-api/
 
 ---
 
-## 🤖 Ativando o LLM (opcional)
+## 🤖 LLM (Claude) — refino opcional do parsing
 
-1. `pip install anthropic`
-2. No `.env`, defina `ANTHROPIC_API_KEY=...`
-3. Reinicie a API. O parsing passa a usar `engine: "regras+similaridade+llm"`.
+A lib `anthropic` já faz parte do `requirements.txt`. Para ativar o enriquecimento:
 
-Sem essas etapas, tudo continua funcionando offline.
+1. No `.env`, defina `ANTHROPIC_API_KEY=...` (e, se quiser, `ANTHROPIC_MODEL=claude-sonnet-4-5`).
+2. Reinicie a API. O parsing passa a usar `engine: "regras+similaridade+llm"`.
+
+Sem a chave (ou em caso de erro/queda de rede), há **fallback automático** para
+`regras+similaridade` — a API **nunca quebra** e continua funcionando offline.
 
 ---
 
